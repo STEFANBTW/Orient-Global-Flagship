@@ -1,7 +1,9 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { RoleProvider } from './src/context/role-context';
+import { CMSProvider } from './src/context/cms-context';
+import { NotificationProvider } from './src/context/NotificationContext';
 import App from './App';
 
 const rootElement = document.getElementById('root');
@@ -12,8 +14,12 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RoleProvider>
+      <CMSProvider>
+        <NotificationProvider>
+          <App />
+        </NotificationProvider>
+      </CMSProvider>
+    </RoleProvider>
   </React.StrictMode>
 );
